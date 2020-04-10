@@ -124,9 +124,11 @@ static int device_method_callback(const char* method_name, const unsigned char* 
     int status = 501;
     const char* RESPONSE_STRING = "{ \"Response\": \"Unknown method requested.\" }";
 
-    (void)printf("\r\nDevice Method called for device %s\r\n", device_id);
-    (void)printf("Device Method name:    %s\r\n", method_name);
-    (void)printf("Device Method payload: %.*s\r\n", (int)size, (const char*)payload);
+    static int g_interval = 0;
+
+    printf("\r\nDevice Method called for device %s\r\n", device_id);
+    printf("Device Method name:    %s\r\n", method_name);
+    printf("Device Method payload: %.*s\r\n", (int)size, (const char*)payload);
 
     if (strcmp(method_name, SetTelemetryIntervalMethod) == 0)
     {
@@ -139,6 +141,7 @@ static int device_method_callback(const char* method_name, const unsigned char* 
             {
                 // expect sec and covert to ms
                 g_interval = 1000 * (int)strtol((char*)payload, &end, 10);
+                printf("interval updated to %d\r\n", g_interval);
                 status = 200;
                 RESPONSE_STRING = "{ \"Response\": \"Telemetry reporting interval updated.\" }";
             }
@@ -150,8 +153,8 @@ static int device_method_callback(const char* method_name, const unsigned char* 
         }
     }
 
-    (void)printf("\r\nResponse status: %d\r\n", status);
-    (void)printf("Response payload: %s\r\n\r\n", RESPONSE_STRING);
+    printf("\r\nResponse status: %d\r\n", status);
+    printf("Response payload: %s\r\n\r\n", RESPONSE_STRING);
 
     *resp_size = strlen(RESPONSE_STRING);
     if ((*response = malloc(*resp_size)) == NULL)
@@ -359,8 +362,8 @@ bool azure_send_measurement(char* name, float data)
 
     if (!error)
     {
-        printf("\r\nSending message %d to IoTHub\r\nMessage: %s\r\n", (int)(messagecount + 1), telemetry_msg_buffer);
-        if (IOTHUB_CLIENT_OK != IoTHubDeviceClient_SendEventAsync(device_handle, message_handle, send_confirm_callback, NULL)
+        printf("\r\nSending message to IoTHub\r\nMessage: %s\r\n", telemetry_msg_buffer);
+        if (IOTHUB_CLIENT_OK != IoTHubDeviceClient_SendEventAsync(device_handle, message_handle, send_confirm_callback, NULL))
         {
             printf("Failed to send message!\r\n");
             error = true;
