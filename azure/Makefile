@@ -27,7 +27,7 @@ LIBS=-liothub_client \
     -lssl \
     -lcrypto \
     -lm \
-    -luud
+    -luuid
 
 
 # Targets
