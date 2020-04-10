@@ -14,7 +14,6 @@ ifeq ($(CFLAGS),)
 endif
 
 INC=-I/usr/include/azureiot
-#LIBS=-laziotsharedutil -liothub_client -liothub_client_mqtt_transport -liothub_client_mqtt_ws_transport -lpthread -liothub_client_amqp_transport -liothub_client_amqp_ws_transport -liothub_client_http_transport -lssl -lcrypto -lcurl -luuid -lm -lparson
 LIBS=-liothub_client \
     -liothub_client_mqtt_transport \
     -lumqtt \
