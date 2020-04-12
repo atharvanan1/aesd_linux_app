@@ -25,8 +25,8 @@ azure: azure/*.c
 	echo "Building azure app"
 	$(MAKE) -C azure
 
-# Phony Target for cleaning the build
-.PHONY: clean
+# Phony Target for cleaning the build and running the azure makefile
+.PHONY: clean azure
 
 clean:
 	@rm -rf hello_world 
