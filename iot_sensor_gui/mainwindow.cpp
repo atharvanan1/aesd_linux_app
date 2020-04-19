@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
     // Create the button, make "this" the parent
-    m_measurement_button = new QPushButton("Get measurement", this);
+    m_measurement_button = new QPushButton("Get temperature", this);
     // set size and location of the button
     m_measurement_button->setGeometry(100, 100, 150, 30);
 
@@ -36,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
     m_message_data->setGeometry(390, 160, 80, 30);
 
     m_message_response_label = new QLabel(this);
-    m_message_response_label->setGeometry(100, 200, 200, 30);
+    m_message_response_label->setGeometry(100, 200, 300, 30);
 }
 
 void MainWindow::handleMeasurementButton()
