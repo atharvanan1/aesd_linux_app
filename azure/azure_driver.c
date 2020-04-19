@@ -17,15 +17,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "iothub.h"
-#include "iothub_device_client.h"
-#include "iothub_client_options.h"
-#include "iothub_message.h"
-#include "azure_c_shared_utility/threadapi.h"
-#include "azure_c_shared_utility/crt_abstractions.h"
-#include "azure_c_shared_utility/platform.h"
-#include "azure_c_shared_utility/shared_util_options.h"
-#include "azure_c_shared_utility/tickcounter.h"
+#include <azureiot/iothub.h>
+#include <azureiot/iothub_device_client.h>
+#include <azureiot/iothub_client_options.h>
+#include <azureiot/iothub_message.h>
+#include <azure_c_shared_utility/threadapi.h>
+#include <azure_c_shared_utility/crt_abstractions.h>
+#include <azure_c_shared_utility/platform.h>
+#include <azure_c_shared_utility/shared_util_options.h>
+#include <azure_c_shared_utility/tickcounter.h>
 
 // The protocol you wish to use should be uncommented
 // 
@@ -36,19 +36,19 @@
 //#define SAMPLE_HTTP
 
 #ifdef SAMPLE_MQTT
-    #include "iothubtransportmqtt.h"
+    #include <<azureiot/iothubtransportmqtt.h>
 #endif // SAMPLE_MQTT
 #ifdef SAMPLE_MQTT_OVER_WEBSOCKETS
-    #include "iothubtransportmqtt_websockets.h"
+    #include <azureiot/iothubtransportmqtt_websockets.h>
 #endif // SAMPLE_MQTT_OVER_WEBSOCKETS
 #ifdef SAMPLE_AMQP
-    #include "iothubtransportamqp.h"
+    #include <azureiot/iothubtransportamqp.h>
 #endif // SAMPLE_AMQP
 #ifdef SAMPLE_AMQP_OVER_WEBSOCKETS
-    #include "iothubtransportamqp_websockets.h"
+    #include <azureiot/iothubtransportamqp_websockets.h>
 #endif // SAMPLE_AMQP_OVER_WEBSOCKETS
 #ifdef SAMPLE_HTTP
-    #include "iothubtransporthttp.h"
+    #include <azureiot/iothubtransporthttp.h>
 #endif // SAMPLE_HTTP
 
 #ifdef SET_TRUSTED_CERT_IN_SAMPLES
