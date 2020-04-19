@@ -30,5 +30,5 @@ azure: azure/*.c
 
 clean:
 	@rm -rf hello_world 
-	rm -rf azure/azure_app
+	@rm -rf azure/azure_app
 	@echo "Build cleaned"
