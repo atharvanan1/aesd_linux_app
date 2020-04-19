@@ -36,7 +36,7 @@
 //#define SAMPLE_HTTP
 
 #ifdef SAMPLE_MQTT
-    #include <<azureiot/iothubtransportmqtt.h>
+    #include <azureiot/iothubtransportmqtt.h>
 #endif // SAMPLE_MQTT
 #ifdef SAMPLE_MQTT_OVER_WEBSOCKETS
     #include <azureiot/iothubtransportmqtt_websockets.h>
