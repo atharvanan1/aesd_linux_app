@@ -17,10 +17,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <azureiot/iothub.h>
-#include <azureiot/iothub_device_client.h>
-#include <azureiot/iothub_client_options.h>
-#include <azureiot/iothub_message.h>
+#include <iothub.h>
+#include <iothub_device_client.h>
+#include <iothub_client_options.h>
+#include <iothub_message.h>
 #include <azure_c_shared_utility/threadapi.h>
 #include <azure_c_shared_utility/crt_abstractions.h>
 #include <azure_c_shared_utility/platform.h>
@@ -36,19 +36,19 @@
 //#define SAMPLE_HTTP
 
 #ifdef SAMPLE_MQTT
-    #include <azureiot/iothubtransportmqtt.h>
+    #include <iothubtransportmqtt.h>
 #endif // SAMPLE_MQTT
 #ifdef SAMPLE_MQTT_OVER_WEBSOCKETS
-    #include <azureiot/iothubtransportmqtt_websockets.h>
+    #include <iothubtransportmqtt_websockets.h>
 #endif // SAMPLE_MQTT_OVER_WEBSOCKETS
 #ifdef SAMPLE_AMQP
-    #include <azureiot/iothubtransportamqp.h>
+    #include <iothubtransportamqp.h>
 #endif // SAMPLE_AMQP
 #ifdef SAMPLE_AMQP_OVER_WEBSOCKETS
-    #include <azureiot/iothubtransportamqp_websockets.h>
+    #include <iothubtransportamqp_websockets.h>
 #endif // SAMPLE_AMQP_OVER_WEBSOCKETS
 #ifdef SAMPLE_HTTP
-    #include <azureiot/iothubtransporthttp.h>
+    #include <iothubtransporthttp.h>
 #endif // SAMPLE_HTTP
 
 #ifdef SET_TRUSTED_CERT_IN_SAMPLES

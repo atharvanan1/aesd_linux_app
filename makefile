@@ -23,7 +23,7 @@ hello_world: hello_world_app/hello_world.c
 
 azure: azure/*.c
 	echo "Building azure app"
-	$(MAKE) -C $(INCLUDES) azure
+	$(MAKE) -C azure
 
 # Phony Target for cleaning the build and running the azure makefile
 .PHONY: clean azure
