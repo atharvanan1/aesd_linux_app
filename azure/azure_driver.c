@@ -17,15 +17,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <iothub.h>
-#include <iothub_device_client.h>
-#include <iothub_client_options.h>
-#include <iothub_message.h>
-#include <azure_c_shared_utility/threadapi.h>
-#include <azure_c_shared_utility/crt_abstractions.h>
-#include <azure_c_shared_utility/platform.h>
-#include <azure_c_shared_utility/shared_util_options.h>
-#include <azure_c_shared_utility/tickcounter.h>
+#include "iothub.h"
+#include "iothub_device_client.h"
+#include "iothub_client_options.h"
+#include "iothub_message.h"
+#include "azure_c_shared_utility/threadapi.h"
+#include "azure_c_shared_utility/crt_abstractions.h"
+#include "azure_c_shared_utility/platform.h"
+#include "azure_c_shared_utility/shared_util_options.h"
+#include "azure_c_shared_utility/tickcounter.h"
 
 // The protocol you wish to use should be uncommented
 // 
@@ -36,7 +36,7 @@
 //#define SAMPLE_HTTP
 
 #ifdef SAMPLE_MQTT
-    #include <iothubtransportmqtt.h>
+    #include "iothubtransportmqtt.h"
 #endif // SAMPLE_MQTT
 #ifdef SAMPLE_MQTT_OVER_WEBSOCKETS
     #include <iothubtransportmqtt_websockets.h>
