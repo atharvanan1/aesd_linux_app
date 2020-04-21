@@ -17,6 +17,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <linux/errno.h>
+
 #include "iothub.h"
 #include "iothub_device_client.h"
 #include "iothub_client_options.h"
