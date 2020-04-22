@@ -13,7 +13,8 @@ ifeq ($(CFLAGS),)
 	CFLAGS = -g -Wall -Werror
 endif
 
-INC=-I$(SYSROOT)/azureiot
+INC=-Iazureiot \
+    -Iazureiot/azure_shared_c_utilties \
 
 LIBS=-liothub_client \
     -liothub_client_mqtt_transport \
