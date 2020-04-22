@@ -13,7 +13,7 @@ ifeq ($(CFLAGS),)
 	CFLAGS = -g -Wall -Werror
 endif
 
-INC=-Iazureiot
+INC=-I=azureiot
 
 LIBS=-liothub_client \
     -liothub_client_mqtt_transport \
