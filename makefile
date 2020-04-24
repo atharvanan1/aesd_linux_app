@@ -21,13 +21,9 @@ hello_world: hello_world_app/hello_world.c
 	@$(CC) $(CFLAGS) $(INCLUDES) hello_world_app/hello_world.c -o hello_world $(LDFLAGS)
 	@echo "Compilation finished"
 
-azure: azure/*.c
-	echo "Building azure app"
-	$(MAKE) -C $(INCLUDES) azure
-
-tmp102: tmp102/*.c
+tmp102_app: tmp102/*.c
 	@echo "Compiling with $(CC)"
-	@$(CC) $(CFLAGS) $(INCLUDES) tmp102.c main.c -o tmp102 $(LDFLAGS)
+	@$(CC) $(CFLAGS) $(INCLUDES) tmp102.c main.c -o tmp102_app $(LDFLAGS)
 	@echo "Compilation finished"
 
 # Phony Target for cleaning the build and running the azure makefile
@@ -35,6 +31,5 @@ tmp102: tmp102/*.c
 
 clean:
 	@rm -rf hello_world 
-	@rm -rf azure/azure_app
-	@rm -rf tmp102/tmp102
+	@rm -rf tmp102_app
 	@echo "Build cleaned"
