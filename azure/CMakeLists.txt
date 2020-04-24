@@ -49,8 +49,6 @@ target_link_libraries(azure_app
     curl
     m
     uhttp
-    prov_auth_client
-    hsm_security_client
     parson
     ssl
     crypto
