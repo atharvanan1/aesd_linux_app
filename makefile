@@ -23,7 +23,7 @@ hello_world: hello_world_app/hello_world.c
 
 tmp102_app: tmp102/*.c
 	@echo "Compiling with $(CC)"
-	@$(CC) $(CFLAGS) $(INCLUDES) tmp102.c main.c -o tmp102_app $(LDFLAGS)
+	@$(CC) $(CFLAGS) $(INCLUDES) tmp102/tmp102.c tmp102/main.c -o tmp102_app $(LDFLAGS)
 	@echo "Compilation finished"
 
 # Phony Target for cleaning the build and running the azure makefile
