@@ -10,30 +10,20 @@ ifeq ($(CC),)
 endif
 
 ifeq ($(CFLAGS),)
-	CFLAGS = -g -Wall -Werror
+	CFLAGS = -g
 endif
 
 # Targets
-all: hello_world azure
+all: tmp102
 
-hello_world: hello_world_app/hello_world.c
+tmp102: main.c tmp102.c
 	@echo "Compiling with $(CC)"
-	@$(CC) $(CFLAGS) $(INCLUDES) hello_world_app/hello_world.c -o hello_world $(LDFLAGS)
+	@$(CC) $(CFLAGS) $(INCLUDES) main.c tmp102.c -o tmp102 $(LDFLAGS)
 	@echo "Compilation finished"
 
-azure: azure/*.c
-	echo "Building azure app"
-	$(MAKE) -C $(INCLUDES) azure
-
-tmp102: tmp102/*.c
-	@echo "Building TMP102 Test"
-	$(MAKE) -C $(INCLUDES) tmp102
-
 # Phony Target for cleaning the build and running the azure makefile
-.PHONY: clean azure
+.PHONY: clean
 
 clean:
-	@rm -rf hello_world 
-	@rm -rf azure/azure_app
-	@rm -f tmp102/tmp102
+	@rm -rf tmp102
 	@echo "Build cleaned"

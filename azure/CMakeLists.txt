@@ -1,5 +1,4 @@
-#Copyright (c) Microsoft. All rights reserved.
-#Licensed under the MIT license. See LICENSE file in the project root for full license information.
+# Leveraged CMakeLists.txt files from IoT Hub Client Samples by Microsoft
 
 Option(edison "set edison to ON to build the DM edison sample" OFF)
 
