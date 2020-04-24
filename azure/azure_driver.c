@@ -190,7 +190,7 @@ static void send_confirm_callback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void
     (void)userContextCallback;
     // When a message is sent this callback will get invoked
     g_message_count_send_confirmations++;
-    (void)printf("Confirmation callback received for message %lu with result %s\r\n", (unsigned long)g_message_count_send_confirmations, ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
+    (void)printf("Confirmation callback received for message %lu with result %s\r\n", (unsigned long)g_message_count_send_confirmations, MU_ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
 }
 
 bool azure_init(void)
@@ -273,11 +273,11 @@ bool azure_init(void)
         // Log tracing is supported in MQTT and AMQP. Not HTTP.
 #ifndef SAMPLE_HTTP
         bool traceOn = true;
-        //if ( IOTHUB_CLIENT_OK != IoTHubDeviceClient_SetOption(device_handle, OPTION_LOG_TRACE, &traceOn))
-        //{
-        //    printf("Failed to set log tracing!\r\n");
-        //    error = true;
-        //}
+        if ( IOTHUB_CLIENT_OK != IoTHubDeviceClient_SetOption(device_handle, OPTION_LOG_TRACE, &traceOn))
+        {
+            printf("Failed to set log tracing!\r\n");
+            error = true;
+        }
 #endif
     }
 
@@ -288,11 +288,11 @@ bool azure_init(void)
         // ms_delay can only be between 1 and 100 milliseconds. 
         // Without the SetOption, the delay defaults to 1 ms. 
         tickcounter_ms_t ms_delay = DO_WORK_10_MS;
-        //if ( IOTHUB_CLIENT_OK != IoTHubDeviceClient_SetOption(device_handle, OPTION_DO_WORK_FREQUENCY_IN_MS, &ms_delay))
-        //{
-        //    printf("Failed to set do work frequency!\r\n");
-        //    error = true;
-        //}
+        if ( IOTHUB_CLIENT_OK != IoTHubDeviceClient_SetOption(device_handle, OPTION_DO_WORK_FREQUENCY_IN_MS, &ms_delay))
+        {
+            printf("Failed to set do work frequency!\r\n");
+            error = true;
+        }
     }
 
     return error;
