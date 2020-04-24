@@ -1,7 +1,7 @@
 ##########################################
 # Author: Atharva Nandanwar
 # Email : Atharva.Nandanwar@Colorado.EDU
-# Makefile to build - "writer"
+# Makefile to build - project apps
 ##########################################"
 
 # Option for Cross Compilation
@@ -26,8 +26,9 @@ azure: azure/*.c
 	$(MAKE) -C $(INCLUDES) azure
 
 tmp102: tmp102/*.c
-	@echo "Building TMP102 Test"
-	$(MAKE) -C $(INCLUDES) tmp102
+	@echo "Compiling with $(CC)"
+	@$(CC) $(CFLAGS) $(INCLUDES) tmp102.c main.c -o tmp102 $(LDFLAGS)
+	@echo "Compilation finished"
 
 # Phony Target for cleaning the build and running the azure makefile
 .PHONY: clean azure
@@ -35,5 +36,5 @@ tmp102: tmp102/*.c
 clean:
 	@rm -rf hello_world 
 	@rm -rf azure/azure_app
-	@rm -f tmp102/tmp102
+	@rm -rf tmp102/tmp102
 	@echo "Build cleaned"
