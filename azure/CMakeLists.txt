@@ -48,8 +48,6 @@ target_link_libraries(azure_app
     pthread
     curl
     m
-    uhttp
-    parson
     ssl
     crypto
     uuid
