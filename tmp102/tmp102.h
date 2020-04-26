@@ -4,6 +4,6 @@
 #include <stdbool.h>
 
 bool TMP102_Init(void);
-void TMP102_Read(void);
+float TMP102_Read(void);
 
 #endif /* TMP102_H__ */
