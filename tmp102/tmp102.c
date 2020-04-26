@@ -67,7 +67,7 @@ bool TMP102_Init(void)
 
     // Write address of temperature register
     uint8_t init_value = TEMP_REG;
-    if(write(sensor_fd, &init_value, 1)){
+    if(write(sensor_fd, &init_value, 1) != 1){
         syslog(LOG_ERR, "Error while writing: %s", strerror(errno));
         retval = true;
         goto error_exit;
