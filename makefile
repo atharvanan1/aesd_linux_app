@@ -14,22 +14,16 @@ ifeq ($(CFLAGS),)
 endif
 
 # Targets
-all: hello_world azure
+all: hello_world
 
 hello_world: hello_world_app/hello_world.c
 	@echo "Compiling with $(CC)"
 	@$(CC) $(CFLAGS) $(INCLUDES) hello_world_app/hello_world.c -o hello_world $(LDFLAGS)
 	@echo "Compilation finished"
 
-tmp102_app: tmp102/*.c
-	@echo "Compiling with $(CC)"
-	@$(CC) $(CFLAGS) $(INCLUDES) tmp102/tmp102.c tmp102/main.c -o tmp102_app $(LDFLAGS)
-	@echo "Compilation finished"
-
 # Phony Target for cleaning the build and running the azure makefile
-.PHONY: clean azure
+.PHONY: clean
 
 clean:
 	@rm -rf hello_world 
-	@rm -rf tmp102_app
 	@echo "Build cleaned"

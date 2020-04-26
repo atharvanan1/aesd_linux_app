@@ -5,6 +5,8 @@
 
 #include "mainwindow.h"
 #include <QApplication>
+#include "tmp102.h"
+#include <iostream>
 
 int main(int argc, char *argv[])
 {
@@ -12,6 +14,10 @@ int main(int argc, char *argv[])
     MainWindow mainWindow;
     mainWindow.showNormal();
     mainWindow.setFixedSize(800, 500);
-    srand((unsigned) time(0));
+    if !(TMP102_Init())
+    {
+      cout << "could not initialize tmp102!" << endl;
+      return -1;
+    }
     return app.exec();
 }

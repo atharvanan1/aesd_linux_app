@@ -4,8 +4,10 @@ TARGET = iot_sensor_gui
 TEMPLATE = app
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    tmp102.h
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    tmp102.c

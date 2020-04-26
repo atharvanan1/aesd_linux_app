@@ -41,7 +41,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::handleMeasurementButton()
 {
-    m_measurement_label->setNum((float)rand() / (float)RAND_MAX * 20); // get a random float between 0 and 20
+    float temperature = TMP102_Read();
+    m_measurement_label->setNum(temperature);
 }
 
 void MainWindow::handleMessageButton()
