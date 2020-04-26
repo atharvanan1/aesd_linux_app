@@ -6,6 +6,9 @@ cmake_minimum_required(VERSION 2.8.11)
 
 project(azure_app)
 
+find_package(azure_c_shared_utility REQUIRED CONFIG)
+find_package(azure_iot_sdks REQUIRED CONFIG)
+
 macro(compileAsC99)
   if (CMAKE_VERSION VERSION_LESS "3.1")
     if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
@@ -48,6 +51,7 @@ target_link_libraries(azure_app
     pthread
     curl
     m
+    uamqp
     uhttp
     prov_auth_client
     hsm_security_client
