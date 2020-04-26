@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     mainWindow.setFixedSize(800, 500);
     if (!TMP102_Init())
     {
-      cout << "could not initialize tmp102!" << endl;
+      std::cout << "could not initialize tmp102!" << std::endl;
       return -1;
     }
     return app.exec();
