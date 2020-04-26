@@ -115,8 +115,8 @@ float TMP102_Read(void)
     }
     
     // Algorithm for calculating temperature for digital data
-    uint16_t tmp_code = (sensor_data[1] << 4) + (sensor_data[0] >> 4);
-    if((tmp_code & TMP_MSB >> BIT_11)) {
+    uint16_t tmp_code = (sensor_data[0] << 4) + (sensor_data[1] >> 4);
+    if((tmp_code & TMP_MSB) >> BIT_11) {
         tmp_code = ~(tmp_code) & 0x0FFF;
         tmp_code += 1;
         temperature = tmp_code * TMP_RES * -1;
