@@ -22,6 +22,8 @@
 #define I2C_DEVICE      "/dev/i2c-1"        // Connects to I2C5 peripheral
 #define TEMP_REG        0x00
 #define CONFIG_REG      0x01
+#define TMP_MSB         0x0800
+#define TMP_RES         0.0625f
 
 /**
  * @brief TMP102_Init
@@ -63,6 +65,11 @@ error_exit:
     return retval;
 }
 
+/**
+ * @brief TMP102_Read
+ * gets the sensor value from TMP102
+ * @return float - temperature value
+ */
 float TMP102_Read(void)
 {
     int sensor_fd;
@@ -83,6 +90,15 @@ float TMP102_Read(void)
        close(sensor_fd);
     }
 
-    temperature = sensor_data[1] << 8 + sensor_data[0];
+    uint16_t tmp_code = sensor_data[1] << 4 + sensor_data[0] >> 4;
+    if(tmp_code & TMP_MSB) {
+        tmp_code = ~(tmp_code) & 0x0FFF;
+        tmp_code += 1;
+        temperature = tmp_code * TMP_RES * -1;
+    }
+    else {
+        tmp_code = tmp_code & 0x0FFF;
+        temperature = tmp_code * TMP_RES;
+    }
     return temperature;
 }
