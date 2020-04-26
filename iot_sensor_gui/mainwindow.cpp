@@ -4,7 +4,7 @@
   */
 
 #include "mainwindow.h"
-
+#include "tmp102.h"
 #include <QCoreApplication>
 
 MainWindow::MainWindow(QWidget *parent)
