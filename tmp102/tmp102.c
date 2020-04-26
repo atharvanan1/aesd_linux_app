@@ -98,10 +98,15 @@ float TMP102_Read(void)
     }
     file_open = true;
 
+        // Set it as slave
+    if(ioctl(sensor_fd, I2C_SLAVE, TMP_102_ADDR) < 0) {
+        syslog(LOG_ERR, "Error while initializing I2C Bus: %s", strerror(errno));
+    }
+
     // Read from sensor
     uint8_t sensor_data[2] = {0 , 0};
     if(read(sensor_fd, sensor_data, 2) != 2) {
-        syslog(LOG_ERR, "Error while initializing I2C Bus: %s", strerror(errno));
+        syslog(LOG_ERR, "Error while reading file: %s", strerror(errno));
     }
 
     // Close the file when operation over
