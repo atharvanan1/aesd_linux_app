@@ -51,7 +51,7 @@ bool TMP102_Init(void)
     bool file_open = false;
 
     // Get the fd for I2C Device
-    if(sensor_fd = open(I2C_DEVICE, O_RDWR) < 0) {
+    if((sensor_fd = open(I2C_DEVICE, O_RDWR)) < 0) {
         syslog(LOG_ERR, "File Open: %s", strerror(errno));
         retval = true;
         goto error_exit;
@@ -93,7 +93,7 @@ float TMP102_Read(void)
     bool file_open = false;
 
     // Get fd for I2C Device
-    if(sensor_fd = open(I2C_DEVICE, O_RDWR) < 0) {
+    if((sensor_fd = open(I2C_DEVICE, O_RDWR)) < 0) {
         syslog(LOG_ERR, "File Open: %s", strerror(errno));
     }
     file_open = true;
@@ -110,7 +110,7 @@ float TMP102_Read(void)
     }
     
     // Algorithm for calculating temperature for digital data
-    uint16_t tmp_code = sensor_data[1] << 4 + sensor_data[0] >> 4;
+    uint16_t tmp_code = (sensor_data[1] << 4) + (sensor_data[0] >> 4);
     if((tmp_code & TMP_MSB >> BIT_11)) {
         tmp_code = ~(tmp_code) & 0x0FFF;
         tmp_code += 1;
