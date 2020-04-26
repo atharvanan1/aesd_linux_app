@@ -48,6 +48,7 @@ target_link_libraries(azure_app
     pthread
     curl
     m
+    uamqp
     uhttp
     prov_auth_client
     hsm_security_client
