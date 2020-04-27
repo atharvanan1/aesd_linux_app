@@ -10,6 +10,8 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QTextEdit>
+#include <QTimer>
+#include "tempSensor.h"
 
 namespace Ui {
 class MainWindow;
@@ -21,16 +23,15 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
 private slots:
-    void handleMeasurementButton();
     void handleMessageButton();
 private:
-    QPushButton *m_measurement_button;
-    QLabel *m_measurement_label;
     QPushButton *m_message_button;
     QLabel *m_message_label;
     QTextEdit *m_message_name;
     QTextEdit *m_message_data;
     QLabel *m_message_response_label;
+    QTimer *m_timer;
+    TempSensor *m_tempSensor;
 };
 
 #endif // MAINWINDOW_H

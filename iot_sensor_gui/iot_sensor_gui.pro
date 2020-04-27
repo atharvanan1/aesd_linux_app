@@ -5,9 +5,11 @@ TEMPLATE = app
 
 HEADERS += \
     mainwindow.h \
-    tmp102.h
+    tmp102.h \
+    tempSensor.h
 
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    tmp102.c
+    tmp102.c \
+    tempSensor.cpp \

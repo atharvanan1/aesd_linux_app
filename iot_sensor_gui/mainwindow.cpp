@@ -5,21 +5,19 @@
 
 #include "mainwindow.h"
 #include "tmp102.h"
+#include "tempSensor.h"
 #include <QCoreApplication>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    // Create the button, make "this" the parent
-    m_measurement_button = new QPushButton("Get temperature", this);
-    // set size and location of the button
-    m_measurement_button->setGeometry(100, 100, 150, 30);
+    m_tempSensor = new TempSensor(this);
+    m_tempSensor->setGeometry(100, 100, 300, 30);
 
-    // Connect button signal to appropriate slot
-    connect(m_measurement_button, SIGNAL (released()), this, SLOT (handleMeasurementButton()));
-
-    m_measurement_label = new QLabel("0.0", this);
-    m_measurement_label->setGeometry(270, 100, 80, 30);
+    // timer help from https://stackoverflow.com/questions/16786109/how-to-call-a-function-periodically-in-qt
+    m_timer = new QTimer(this);
+    connect(m_timer, &QTimer::timeout, m_tempSensor, &TempSensor::temperature_update);
+    m_timer->start(3000);
 
     // Create the button, make "this" the parent
     m_message_button = new QPushButton("Send message", this);
@@ -37,12 +35,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     m_message_response_label = new QLabel(this);
     m_message_response_label->setGeometry(100, 200, 300, 30);
-}
-
-void MainWindow::handleMeasurementButton()
-{
-    float temperature = TMP102_Read();
-    m_measurement_label->setNum(temperature);
 }
 
 void MainWindow::handleMessageButton()
