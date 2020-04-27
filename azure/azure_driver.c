@@ -58,7 +58,7 @@
 #define DO_WORK_10_MS (10)
 
 /* Device connection string  */
-static const char* connectionString = "HostName=ECEN5013.azure-devices.net;DeviceId=rpi_test;SharedAccessKey=5ioWs0hBbz+6/IZThke2j1yJbGrK9P8GATx5TDdvyyk=";
+static const char* connectionString = "HostName=ECEN5013.azure-devices.net;DeviceId=stm32;SharedAccessKey=E90jluGLyEgXDznzPjbwrP5W+x6/zYBhJ8Zp3aNAutk=";
 
 static size_t g_message_count_send_confirmations = 0; // number of message confirmations received
 
