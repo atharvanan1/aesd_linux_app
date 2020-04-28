@@ -7,6 +7,7 @@
 #include "tmp102.h"
 #include "tempSensor.h"
 #include <QCoreApplication>
+#include "azure_driver.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -34,14 +35,25 @@ MainWindow::MainWindow(QWidget *parent)
     m_message_data->setGeometry(390, 160, 80, 30);
 
     m_message_response_label = new QLabel(this);
-    m_message_response_label->setGeometry(100, 200, 300, 30);
+    m_message_response_label->setGeometry(100, 200, 400, 30);
 }
 
 void MainWindow::handleMessageButton()
 {
+    bool result = azure_send_measurement(m_message_name->toPlainText().toLatin1().data(), (m_message_name->toPlainText()).toFloat())
+    if (result)
+    {
+        QString str = "failed to send!"
+    }
+    else
+    {
+        QString str = "sent!"
+    }
+    
     m_message_response_label->setText("Message ("
                                       + m_message_name->toPlainText()
                                       + ": "
                                       + m_message_data->toPlainText()
-                                      + ") sent!");
+                                      + ") "
+                                      + str);
 }

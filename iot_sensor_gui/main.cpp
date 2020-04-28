@@ -7,6 +7,7 @@
 #include <QApplication>
 #include "tmp102.h"
 #include <iostream>
+#include "azure_driver.h"
 
 int main(int argc, char *argv[])
 {
@@ -17,6 +18,11 @@ int main(int argc, char *argv[])
     if (TMP102_Init())
     {
       std::cout << "could not initialize tmp102!" << std::endl;
+      return -1;
+    }
+    if (azure_init())
+    {
+      std::cout << "could not initialize azure driver!" << std::endl;
       return -1;
     }
     return app.exec();
