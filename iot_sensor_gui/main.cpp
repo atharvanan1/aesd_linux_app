@@ -25,5 +25,7 @@ int main(int argc, char *argv[])
       std::cout << "could not initialize azure driver!" << std::endl;
       return -1;
     }
-    return app.exec();
+    int retval = app.exec();
+    azure_deinit();
+    return retval;
 }
