@@ -25,7 +25,6 @@ set ( SOURCES
  mainwindow.cpp
  tempSensor.cpp
  tmp102.c
- azure_app.c
  azure_driver.c
 )
 
