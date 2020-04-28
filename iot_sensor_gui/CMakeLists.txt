@@ -23,8 +23,6 @@ set ( QT_LIBRARIES
  Qt5::Widgets
 )
 
-set (CMAKE_PREFIX_PATH /home/bryan/Qt5.14.2/5.14.2/gcc_64/lib/cmake/Qt5/)
-
 find_package(Qt5 COMPONENTS Core REQUIRED)
 get_target_property(QtCore_location Qt5::Core LOCATION)
 
