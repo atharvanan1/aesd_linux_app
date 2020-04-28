@@ -44,11 +44,11 @@ void MainWindow::handleMessageButton()
     QString str;
     if (result)
     {
-        str = "failed to send!"
+        str = "failed to send!";
     }
     else
     {
-        str = "sent!"
+        str = "sent!";
     }
     
     m_message_response_label->setText("Message ("
