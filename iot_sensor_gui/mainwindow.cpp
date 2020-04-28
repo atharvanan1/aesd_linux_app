@@ -41,13 +41,14 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::handleMessageButton()
 {
     bool result = azure_send_measurement(m_message_name->toPlainText().toLatin1().data(), (m_message_name->toPlainText()).toFloat());
+    QString str;
     if (result)
     {
-        QString str = "failed to send!"
+        str = "failed to send!"
     }
     else
     {
-        QString str = "sent!"
+        str = "sent!"
     }
     
     m_message_response_label->setText("Message ("
