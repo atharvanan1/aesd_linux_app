@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::handleMessageButton()
 {
-    bool result = azure_send_measurement(m_message_name->toPlainText().toLatin1().data(), (m_message_name->toPlainText()).toFloat())
+    bool result = azure_send_measurement(m_message_name->toPlainText().toLatin1().data(), (m_message_name->toPlainText()).toFloat());
     if (result)
     {
         QString str = "failed to send!"
